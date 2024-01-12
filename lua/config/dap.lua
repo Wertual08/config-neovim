@@ -29,7 +29,7 @@ function Module.setup()
             program = "${file}"
         },
         {
-            type = "delve",
+            type = "go",
             name = "Debug test", -- configuration for debugging test files
             request = "launch",
             mode = "test",
@@ -37,7 +37,7 @@ function Module.setup()
         },
         -- works with go.mod packages and sub packages 
         {
-            type = "delve",
+            type = "go",
             name = "Debug test (go.mod)",
             request = "launch",
             mode = "test",
