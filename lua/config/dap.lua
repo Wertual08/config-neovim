@@ -4,7 +4,7 @@ function Module.setup()
     local dap = require("dap")
     local widgets = require('dap.ui.widgets')
     local data_dir = os.getenv("XDG_DATA_HOME") or os.getenv("HOME") .. "/.local/share"
-    require('dap.ext.autocompl').attach()
+    -- require('dap.ext.autocompl').attach()
 
     dap.adapters.coreclr = {
         type = "executable",
@@ -54,9 +54,9 @@ function Module.setup()
     })
     vim.fn.sign_define('DapStopped', {
         text = "󰘤",
-        texthl = "Special",
+        texthl = "Todo",
         linehl = "InSearch",
-        numhl = "Special",
+        numhl = "Todo",
     })
 
     vim.keymap.set('n', '<F5>',         function()

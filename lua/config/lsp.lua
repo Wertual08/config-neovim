@@ -44,7 +44,7 @@ function Module.setup()
 		flags = lsp_flags,
 		capabilities = capabilities,
 	}
-	lspconfig['pyright'].setup {
+	lspconfig['pylsp'].setup {
 		flags = lsp_flags,
 		capabilities = capabilities,
 	}
@@ -77,28 +77,28 @@ function Module.setup()
 		flags = lsp_flags,
 		capabilities = capabilities,
 	}
-    --lspconfig['omnisharp'].setup {
-	--	flags = lsp_flags,
-	--	capabilities = capabilities,
-
-	--	enable_editorconfig_support = true,
-
-	--	enable_ms_build_load_projects_on_demand = false,
-
-	--	enable_roslyn_analyzers = false,
-
-	--	organize_imports_on_format = true,
-
-	--	enable_import_completion = true,
-
-	--	sdk_include_prereleases = true,
-
-	--	analyze_open_documents_only = false,
-	--}
-    lspconfig['csharp_ls'].setup {
+    lspconfig['omnisharp'].setup {
 		flags = lsp_flags,
 		capabilities = capabilities,
-    }
+
+		enable_editorconfig_support = true,
+
+		enable_ms_build_load_projects_on_demand = false,
+
+		enable_roslyn_analyzers = false,
+
+		organize_imports_on_format = true,
+
+		enable_import_completion = true,
+
+		sdk_include_prereleases = true,
+
+		analyze_open_documents_only = false,
+	}
+    --lspconfig['csharp_ls'].setup {
+	--	flags = lsp_flags,
+	--	capabilities = capabilities,
+    --}
 	lspconfig['rust_analyzer'].setup {
 		flags = lsp_flags,
 		capabilities = capabilities,
@@ -131,11 +131,11 @@ function Module.setup()
 	vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 	vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 	vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-
+    
     vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('UserLspConfig', {}),
         callback = function(ev)
-            vim.api.nvim_buf_set_option(ev.buf, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+            vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
             local bufopts = { noremap = true, silent = true, buffer = ev.buf }
             vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
