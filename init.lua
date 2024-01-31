@@ -10,6 +10,7 @@ vim.opt.rnu             = true
 vim.opt.nu              = true
 vim.opt.splitright      = true
 vim.opt.autoread        = true
+vim.opt.lazyredraw      = true
 vim.opt.scrolloff       = 10
 vim.opt.completeopt     = 'noinsert' -- ????
 vim.cmd([[tnoremap <Esc> <C-\><C-n>]])
