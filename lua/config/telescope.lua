@@ -11,7 +11,8 @@ function Module.setup()
 
     require("telescope").setup {
         defaults = {
-            file_ignore_patterns = { "bin", "obj" }
+            file_ignore_patterns = { "^.git$" },
+            borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
         }
     }
 end

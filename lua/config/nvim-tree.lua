@@ -14,16 +14,14 @@ function Module.setup()
         hijack_netrw = true,
         view = {
             width = 80,
-            --side = "right",
             number = true,
             relativenumber = true,
-            --preserve_window_proportions = true,
             float = {
                 enable = true,
                 open_win_config = function ()
                     return {
                         relative = "editor",
-                        border = "rounded",
+                        border = "single",
                         anchor = "NE",
                         row = 1,
                         col = vim.api.nvim_get_option("columns") - 1,
