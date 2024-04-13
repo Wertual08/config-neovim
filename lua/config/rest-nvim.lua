@@ -28,7 +28,7 @@ function Module.setup()
             formatters = {
                 json = "jq",
                 html = function(body)
-                    return vim.fn.system({"tidy", "-i", "-q", "-"}, body)
+                    return vim.fn.system({ "tidy", "-i", "-q", "-" }, body)
                 end
             },
         },

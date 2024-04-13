@@ -1,6 +1,6 @@
 local Module = {}
 
-function Module.setup() 
+function Module.setup()
     require("mason").setup()
 end
 

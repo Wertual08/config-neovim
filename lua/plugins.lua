@@ -24,6 +24,7 @@ function Module.setup(use)
     use { "williamboman/mason.nvim" }
     use { "williamboman/mason-lspconfig.nvim" }
     use { "neovim/nvim-lspconfig" }
+    use { "Hoffs/omnisharp-extended-lsp.nvim" }
 
     -- Debugger
     use { "mfussenegger/nvim-dap" }

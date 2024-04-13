@@ -17,7 +17,7 @@ function Module.setup()
         port = '${port}',
         executable = {
             command = 'dlv',
-            args = {'dap', '-l', '127.0.0.1:${port}'},
+            args = { 'dap', '-l', '127.0.0.1:${port}' },
         },
     }
 
@@ -35,7 +35,7 @@ function Module.setup()
             mode = "test",
             program = "${file}"
         },
-        -- works with go.mod packages and sub packages 
+        -- works with go.mod packages and sub packages
         {
             type = "go",
             name = "Debug test (go.mod)",
@@ -59,21 +59,21 @@ function Module.setup()
         numhl = "Todo",
     })
 
-    vim.keymap.set('n', '<F5>',         function()
+    vim.keymap.set('n', '<F5>', function()
         if dap.session() == nil then
             require('dap.ext.vscode').load_launchjs(
                 nil,
                 { coreclr = { "cs" },
-            })
+                })
         end
 
         dap.continue()
     end)
-    vim.keymap.set('n', '<S-F5>',       dap.terminate)
-    vim.keymap.set('n', '<F10>',        dap.step_over)
-    vim.keymap.set('n', '<F11>',        dap.step_into)
-    vim.keymap.set('n', '<F12>',        dap.step_out)
-    vim.keymap.set('n', '<Leader>b',    dap.toggle_breakpoint)
+    vim.keymap.set('n', '<S-F5>', dap.terminate)
+    vim.keymap.set('n', '<F10>', dap.step_over)
+    vim.keymap.set('n', '<F11>', dap.step_into)
+    vim.keymap.set('n', '<F12>', dap.step_out)
+    vim.keymap.set('n', '<Leader>b', dap.toggle_breakpoint)
 
     local scopes = widgets.sidebar(widgets.scopes, { width = 80 })
 
@@ -81,19 +81,19 @@ function Module.setup()
         dap.repl.toggle()
     end)
     vim.keymap.set('n', '<Leader>v', scopes.toggle)
-    vim.keymap.set({'n', 'v'}, '<Leader>k', widgets.hover)
+    vim.keymap.set({ 'n', 'v' }, '<Leader>k', widgets.hover)
 
     vim.keymap.set('n', '<Leader>f', function()
-      	widgets.centered_float(widgets.frames)
+        widgets.centered_float(widgets.frames)
     end)
     vim.keymap.set('n', '<Leader>n', function()
-      	widgets.centered_float(widgets.sessions)
+        widgets.centered_float(widgets.sessions)
     end)
     vim.keymap.set('n', '<Leader>e', function()
-      	widgets.centered_float(widgets.expression)
+        widgets.centered_float(widgets.expression)
     end)
     vim.keymap.set('n', '<Leader>t', function()
-      	widgets.centered_float(widgets.threads)
+        widgets.centered_float(widgets.threads)
     end)
 end
 

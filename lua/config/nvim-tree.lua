@@ -18,7 +18,7 @@ function Module.setup()
             relativenumber = true,
             float = {
                 enable = true,
-                open_win_config = function ()
+                open_win_config = function()
                     return {
                         relative = "editor",
                         border = "single",
