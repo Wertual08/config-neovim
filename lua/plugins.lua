@@ -7,10 +7,6 @@ function Module.setup(use)
         config = function()
             local vscode = require('vscode')
 
-            vscode.setup {
-                disable_nvimtree_bg = true,
-            }
-
             vscode.load()
 
             vim.cmd("colorscheme vscode")
@@ -77,12 +73,6 @@ function Module.setup(use)
     use {
         "akinsho/toggleterm.nvim",
         tag = '*',
-    }
-
-    -- REST
-    use {
-        "rest-nvim/rest.nvim",
-        requires = { "nvim-lua/plenary.nvim" },
     }
 end
 

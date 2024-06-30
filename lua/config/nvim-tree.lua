@@ -3,7 +3,6 @@ local Module = {}
 function Module.setup()
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
-    vim.opt.termguicolors = true
 
     local api = require("nvim-tree.api")
     vim.keymap.set('n', '<space>v', api.tree.toggle, {})
@@ -24,9 +23,9 @@ function Module.setup()
                         border = "single",
                         anchor = "NE",
                         row = 1,
-                        col = vim.api.nvim_get_option("columns") - 1,
+                        col = vim.api.nvim_get_option_value("columns", {}) - 1,
                         width = 80,
-                        height = vim.api.nvim_get_option("lines") - 5,
+                        height = vim.api.nvim_get_option_value("lines", {}) - 5,
                     }
                 end,
             },

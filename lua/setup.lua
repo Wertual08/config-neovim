@@ -11,7 +11,6 @@ function Module.setup()
     require("config.treesitter").setup()
     require("config.telescope").setup()
     require("config.toggleterm").setup()
-    require("config.rest-nvim").setup()
 end
 
 return Module
