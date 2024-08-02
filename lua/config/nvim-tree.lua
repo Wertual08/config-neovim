@@ -1,49 +1,36 @@
-local Module = {}
-
-function Module.setup()
-    vim.g.loaded_netrw = 1
-    vim.g.loaded_netrwPlugin = 1
-
-    local api = require("nvim-tree.api")
-    vim.keymap.set('n', '<space>v', api.tree.toggle, {})
-
-    local nvimtree = require("nvim-tree")
-    nvimtree.setup {
-        disable_netrw = true,
-        hijack_netrw = true,
-        view = {
-            width = 80,
-            number = true,
-            relativenumber = true,
-            float = {
-                enable = true,
-                open_win_config = function()
-                    return {
-                        relative = "editor",
-                        border = "single",
-                        anchor = "NE",
-                        row = 1,
-                        col = vim.api.nvim_get_option_value("columns", {}) - 1,
-                        width = 80,
-                        height = vim.api.nvim_get_option_value("lines", {}) - 5,
-                    }
-                end,
-            },
+return {
+    disable_netrw = true,
+    hijack_netrw = true,
+    view = {
+        width = 80,
+        number = true,
+        relativenumber = true,
+        float = {
+            enable = true,
+            open_win_config = function()
+                return {
+                    relative = "editor",
+                    border = "single",
+                    anchor = "NE",
+                    row = 1,
+                    col = vim.api.nvim_get_option_value("columns", {}) - 1,
+                    width = 80,
+                    height = vim.api.nvim_get_option_value("lines", {}) - 5,
+                }
+            end,
         },
-        filters = {
-            custom = { "^\\.git$" },
-            dotfiles = false,
+    },
+    filters = {
+        custom = { "^\\.git$" },
+        dotfiles = false,
+    },
+    actions = {
+        open_file = {
+            quit_on_open = true,
+            resize_window = true,
         },
-        actions = {
-            open_file = {
-                quit_on_open = true,
-                resize_window = true,
-            },
-        },
-        git = {
-            ignore = false,
-        },
-    }
-end
-
-return Module
+    },
+    git = {
+        ignore = false,
+    },
+}
