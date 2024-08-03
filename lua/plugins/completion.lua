@@ -9,8 +9,10 @@ return {
         "hrsh7th/cmp-calc",
         "hrsh7th/cmp-emoji",
         "hrsh7th/cmp-vsnip",
+        "hrsh7th/vim-vsnip"
     },
+
     config = function ()
-        module("config.nvim-cmp")
+        require("config.nvim-cmp")
     end,
 }

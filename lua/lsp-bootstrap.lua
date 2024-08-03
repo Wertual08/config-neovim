@@ -39,7 +39,7 @@ lspconfig['html'].setup {
     capabilities = capabilities,
 }
 
-lspconfig['jsonls'].setup {
+lspconfig['jsonld-lsp'].setup {
     flags = lsp_flags,
     capabilities = capabilities,
 }
