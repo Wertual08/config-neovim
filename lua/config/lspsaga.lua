@@ -1,5 +1,7 @@
 return {
-    border = "single",
+    ui = {
+        border = "single",
+    },
     symbol_in_winbar = {
         enable = false,
     },
@@ -9,6 +11,11 @@ return {
     finder = {
         keys = {
             toggle_or_open = "<CR>",
+        },
+    },
+    rename = {
+        keys = {
+            quit = "<ESC>",
         },
     },
 }
