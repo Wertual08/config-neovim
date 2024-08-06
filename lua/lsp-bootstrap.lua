@@ -1,5 +1,3 @@
-local lspconfig = require("lspconfig")
-
 -- Diagnostic signs
 local diagnostic_signs = {
     { name = "DiagnosticSignError", text = "" },
@@ -7,21 +5,34 @@ local diagnostic_signs = {
     { name = "DiagnosticSignInfo", text = "" },
     { name = "DiagnosticSignHint", text = "󰞂" },
 }
+
 for _, sign in ipairs(diagnostic_signs) do
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
 end
 
+
+local lspconfig = require("lspconfig")
 
 local lsp_flags = {
     debounce_text_changes = 150,
 }
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-lspconfig['gopls'].setup {
+lspconfig.gopls.setup {
     flags = lsp_flags,
     capabilities = capabilities,
     settings = {
         gopls = {
+            semanticTokens = true,
+            codelenses = {
+                gc_details = true,
+                generate = true,
+                regenerate_cgo = true,
+                run_govulncheck = true,
+                tidy = true,
+                upgrade_dependency = true,
+                vendor = true,
+            },
             analyses = {
                 nilness = true,
                 unusedparams = true,
@@ -34,22 +45,22 @@ lspconfig['gopls'].setup {
     },
 }
 
-lspconfig['html'].setup {
+lspconfig.html.setup {
     flags = lsp_flags,
     capabilities = capabilities,
 }
 
-lspconfig['jsonls'].setup {
+lspconfig.jsonls.setup {
     flags = lsp_flags,
     capabilities = capabilities,
 }
 
-lspconfig['pylsp'].setup {
+lspconfig.pylsp.setup {
     flags = lsp_flags,
     capabilities = capabilities,
 }
 
-lspconfig['lua_ls'].setup {
+lspconfig.lua_ls.setup {
     flags = lsp_flags,
     capabilities = capabilities,
     settings = {
@@ -71,17 +82,17 @@ lspconfig['lua_ls'].setup {
     },
 }
 
-lspconfig['vimls'].setup {
+lspconfig.vimls.setup {
     flags = lsp_flags,
     capabilities = capabilities,
 }
 
-lspconfig['tsserver'].setup {
+lspconfig.tsserver.setup {
     flags = lsp_flags,
     capabilities = capabilities,
 }
 
-lspconfig['omnisharp'].setup {
+lspconfig.omnisharp.setup {
     flags = lsp_flags,
     capabilities = capabilities,
 
@@ -146,7 +157,7 @@ lspconfig['omnisharp'].setup {
             NewLineForFinally = true,
             NewLineForMembersInObjectInit = true,
             NewLineForMembersInAnonymousTypes = true,
-            NewLineForClausesInQuery = true
+            NewLineForClausesInQuery = true,
         },
 
         RoslynExtensionsOptions = {
@@ -174,7 +185,7 @@ lspconfig['omnisharp'].setup {
     },
 }
 
-lspconfig['rust_analyzer'].setup {
+lspconfig.rust_analyzer.setup {
     flags = lsp_flags,
     capabilities = capabilities,
 
@@ -193,12 +204,12 @@ lspconfig['rust_analyzer'].setup {
     }
 }
 
-lspconfig['zls'].setup {
+lspconfig.zls.setup {
     flags = lsp_flags,
     capabilities = capabilities,
 }
 
-lspconfig['kotlin_language_server'].setup {
+lspconfig.kotlin_language_server.setup {
     flags = lsp_flags,
     capabilities = capabilities,
 }

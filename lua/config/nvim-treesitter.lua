@@ -1,4 +1,5 @@
 return {
+    --ensure_installed = "all",
     sync_install = false,
 
     highlight = {
