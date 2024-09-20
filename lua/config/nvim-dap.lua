@@ -50,7 +50,7 @@ vim.fn.sign_define('DapBreakpoint', {
 vim.fn.sign_define('DapStopped', {
     text = "󰘤",
     texthl = "Todo",
-    linehl = "InSearch",
+    linehl = "CurSearch",
     numhl = "Todo",
 })
 
