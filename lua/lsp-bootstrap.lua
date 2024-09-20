@@ -87,7 +87,7 @@ lspconfig.vimls.setup {
     capabilities = capabilities,
 }
 
-lspconfig.tsserver.setup {
+lspconfig.ts_ls.setup {
     flags = lsp_flags,
     capabilities = capabilities,
 }
@@ -104,6 +104,10 @@ lspconfig.omnisharp.setup {
     },
 
     settings = {
+        omnisharp = {
+            enableLspDriver = true,
+        },
+
         FormattingOptions = {
             EnableEditorConfigSupport = false,
             OrganizeImports = true,

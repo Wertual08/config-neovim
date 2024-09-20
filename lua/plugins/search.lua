@@ -4,5 +4,5 @@ return {
         dependencies = "nvim-lua/plenary.nvim",
         opts = require("config.telescope"),
     },
-    {  'brooth/far.vim' },
+    { "MagicDuck/grug-far.nvim", opts = require("config.grug-far") },
 }

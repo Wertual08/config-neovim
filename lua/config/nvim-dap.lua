@@ -55,13 +55,6 @@ vim.fn.sign_define('DapStopped', {
 })
 
 vim.keymap.set('n', '<F5>', function()
-    if dap.session() == nil then
-        require('dap.ext.vscode').load_launchjs(
-            nil,
-            { coreclr = { "cs" },
-            })
-    end
-
     dap.continue()
 end)
 vim.keymap.set('n', '<S-F5>', dap.terminate)
