@@ -13,14 +13,18 @@ end
 
 local lspconfig = require("lspconfig")
 
-local lsp_flags = {
-    debounce_text_changes = 150,
-}
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+lspconfig.util.default_config = vim.tbl_extend(
+    "force",
+    lspconfig.util.default_config,
+    {
+        flags = {
+            debounce_text_changes = 150,
+        },
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+    }
+)
 
 lspconfig.gopls.setup {
-    flags = lsp_flags,
-    capabilities = capabilities,
     settings = {
         gopls = {
             semanticTokens = true,
@@ -46,23 +50,15 @@ lspconfig.gopls.setup {
 }
 
 lspconfig.html.setup {
-    flags = lsp_flags,
-    capabilities = capabilities,
 }
 
 lspconfig.jsonls.setup {
-    flags = lsp_flags,
-    capabilities = capabilities,
 }
 
 lspconfig.pylsp.setup {
-    flags = lsp_flags,
-    capabilities = capabilities,
 }
 
 lspconfig.lua_ls.setup {
-    flags = lsp_flags,
-    capabilities = capabilities,
     settings = {
         Lua = {
             runtime = {
@@ -83,19 +79,12 @@ lspconfig.lua_ls.setup {
 }
 
 lspconfig.vimls.setup {
-    flags = lsp_flags,
-    capabilities = capabilities,
 }
 
 lspconfig.ts_ls.setup {
-    flags = lsp_flags,
-    capabilities = capabilities,
 }
 
 lspconfig.omnisharp.setup {
-    flags = lsp_flags,
-    capabilities = capabilities,
-
     handlers = {
         ["textDocument/definition"] = require('omnisharp_extended').definition_handler,
         ["textDocument/typeDefinition"] = require('omnisharp_extended').type_definition_handler,
@@ -190,9 +179,6 @@ lspconfig.omnisharp.setup {
 }
 
 lspconfig.rust_analyzer.setup {
-    flags = lsp_flags,
-    capabilities = capabilities,
-
     settings = {
         ["rust-analyzer"] = {
             imports = {
@@ -209,11 +195,7 @@ lspconfig.rust_analyzer.setup {
 }
 
 lspconfig.zls.setup {
-    flags = lsp_flags,
-    capabilities = capabilities,
 }
 
 lspconfig.kotlin_language_server.setup {
-    flags = lsp_flags,
-    capabilities = capabilities,
 }
